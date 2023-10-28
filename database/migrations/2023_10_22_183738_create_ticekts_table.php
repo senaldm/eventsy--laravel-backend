@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('ticketKey')->unique();
             $table->string('ticketType');
             $table->string('userToken');
+            $table->timestamps();
            
         });
     }

@@ -1,7 +1,3 @@
-
-
-
-
 <div class="container">
     <div class="row">
         <div class="col-md-8 offset-md-2">
@@ -44,6 +40,14 @@
                         <div class="form-group">
                             <label for="no_of_tickets">Number of Tickets</label>
                             <input type="number" class="form-control" id="no_of_tickets" name="no_of_tickets" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="image_height">Height of final image you expect in pixels</label>
+                            <input type="number" class="form-control" id="image_height" name="image_height" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="image_width">Width of final image you expect in pixels</label>
+                            <input type="number" class="form-control" id="image_width" name="image_width" required>
                         </div>
 
                         <button type="submit" class="btn btn-primary">Generate Tickets</button>

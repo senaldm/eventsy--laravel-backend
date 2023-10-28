@@ -33,3 +33,8 @@ Route::post('/hire/{currentId}/{plannerId}', [PlannerController::class, 'addFrie
 
 
 Route::post('/QRcreate',[QRController::class,'createQR'])->name('createqr');
+Route::resource('emp', 'QRController');
+
+
+//QR code validate
+Route::get('/validate/{userCode}',[QRController::class,'validateQR']);
