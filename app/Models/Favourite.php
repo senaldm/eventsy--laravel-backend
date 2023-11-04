@@ -7,16 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 
-
-class Friend extends Model
+class Favourite extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $primaryKey = 'favouriteID';
+
     protected $fillable = [
-        'friendID',
+        'favouriteID',
         'plannerID',
-        'friendPlannerID',
-        'status',
+        'favouritePlannerID',
     ];
 
     protected $hidden = [
@@ -27,10 +27,4 @@ class Friend extends Model
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    // comment this line
-    // public function planner() {
-    //     return $this->belongsTo(Planner::class, 'plannerID', 'plannerID');
-    // }
-    
 }

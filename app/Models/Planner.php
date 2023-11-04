@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
+
 
 class Planner extends Model
 {
@@ -25,9 +26,12 @@ class Planner extends Model
         'image1',
         'image2',
         'image3',
+        'image4',
+        'image5',
         'contact',
         'email',
-        'description'
+        'description',
+        'services'
     ];
 
     protected $hidden = [
@@ -46,6 +50,16 @@ class Planner extends Model
 
     public function friends()
     {
-        return $this->belongsToMany(Planner::class, 'friends', 'plannerID', 'friendPlannerID');
+        return $this->belongsToMany(Planner::class, 'friends', 'plannerID', 'friendPlannerID',)->withPivot('status'); // Correct line
+        //return $this->belongsToMany(Friend::class)->withPivot('status');
+        //return $this->hasMany(Friend::class, 'plannerID', 'plannerID');
+
     }
+    public function favourites()
+    {
+        return $this->belongsToMany(Planner::class, 'favourites', 'plannerID', 'favouritePlannerID',); // Correct line
+
+    }
+
+    
 }

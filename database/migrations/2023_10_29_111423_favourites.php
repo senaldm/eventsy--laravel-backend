@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('friends', function (Blueprint $table) {
-            $table->id('friendID');
+        Schema::create('favourites', function (Blueprint $table) {
+            $table->id('favouriteID');
             $table->unsignedBigInteger('plannerID');
-            $table->unsignedBigInteger('friendPlannerID');
-            $table->enum('status', ['pending', 'confirmed'])->default('pending');
-            //$table->string('status')->default('pending');
+            $table->unsignedBigInteger('favouritePlannerID');
             $table->foreign('plannerID')->references('plannerID')->on('planners');
-            $table->foreign('friendPlannerID')->references('plannerID')->on('planners');
-            $table->unique(['plannerID', 'friendPlannerID']);
+            $table->foreign('favouritePlannerID')->references('plannerID')->on('planners');
+            $table->unique(['plannerID', 'favouritePlannerID']);
             $table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('friends');
+        Schema::dropIfExists('favourites');
     }
 };
