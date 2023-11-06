@@ -32,7 +32,7 @@ Route::post('/hire/{currentId}/{plannerId}', [PlannerController::class, 'addFrie
 // Route::post('/edit', [ImageController::class], 'editImage')->name('edit.image');
 
 
-Route::post('/QRcreate',[QRController::class,'createQR'])->name('createqr');
+Route::get('/QRcreate',[QRController::class,'createQR'])->name('createqr');
 Route::resource('emp', 'QRController');
 
 
