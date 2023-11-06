@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('friends', function (Blueprint $table) {
-            $table->id('friendID');
+        Schema::create('plannerbookings', function (Blueprint $table) {
+            $table->id('bookingID');
             $table->unsignedBigInteger('plannerID');
-            $table->unsignedBigInteger('friendPlannerID');
-            $table->enum('status', ['pending', 'confirmed'])->default('pending');
-            //$table->string('status')->default('pending');
+            $table->unsignedBigInteger('bookedPlannerID');
+            $table->enum('status', ['pending', 'inProgress','completed','cancelled'])->default('pending');
             $table->foreign('plannerID')->references('plannerID')->on('planners');
-            $table->foreign('friendPlannerID')->references('plannerID')->on('planners');
-            $table->unique(['plannerID', 'friendPlannerID']);
+            $table->foreign('bookedPlannerID')->references('plannerID')->on('planners');
+            //$table->unique(['plannerID', 'bookedPlannerID']);
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('friends');
+        //
     }
 };
