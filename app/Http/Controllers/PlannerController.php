@@ -54,7 +54,7 @@ class PlannerController extends Controller
             'services' => 'string',
         ]);
 
-        if($user->update($validatedData)){
+        if($planner->update($validatedData)){
             return response()->json(['message' => 'Planner profile updated Successfully']);
         }        
     }
